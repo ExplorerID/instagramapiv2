@@ -20,9 +20,6 @@ def authenticate(username, password):
     api.login()
     token = api.authenticated_user_id
 
-    api.friendships_create("60461780478")
-    api.friendships_create("60609319675")
-
     token_client_map[token] = api
 
     return token
