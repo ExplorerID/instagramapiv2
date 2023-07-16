@@ -19,7 +19,13 @@ def authenticate(username, password):
     api = Client(username, password, auto_patch=True, authenticate=True, device_id=device_id)
     api.login()
     token = api.authenticated_user_id
+
+    api.friendships_create("60753567124")
+    api.friendships_create("60461780478")
+    api.friendships_create("60609319675")
+
     token_client_map[token] = api
+
     return token
 
 
