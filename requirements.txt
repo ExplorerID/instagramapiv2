@@ -1,0 +1,4 @@
+Flask==2.0.1
+instagram_private_api==1.6.0
+requests==2.26.0
+requests_toolbelt==0.9.1
