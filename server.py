@@ -27,10 +27,18 @@ def authenticate(username, password):
 
 @app.route("/authenticate", methods=["POST"])
 def authenticate_user():
-    username = request.json.get("username")
-    password = request.json.get("password")
-    token = authenticate(username, password)
-    return jsonify({"user_id": token})
+    try:
+        username = request.json.get("username")
+        password = request.json.get("password")
+        token = authenticate(username, password)
+
+        if not token:
+            return jsonify({"error": "Invalid credentials"}), 401
+
+        return jsonify({"user_id": token})
+
+    except Exception as e:
+        return jsonify({"error": str(e)}), 500
 
 
 @app.route("/getUserProfile", methods=["GET"])
